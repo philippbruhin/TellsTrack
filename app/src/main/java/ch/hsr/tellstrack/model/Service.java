@@ -5,6 +5,22 @@ package ch.hsr.tellstrack.model;
  */
 
 public class Service {
-    public String regular;
-    public String irregular;
+    private String regular;
+    private String irregular;
+
+    public String getIrregular() {
+        return irregular;
+    }
+
+    public void setIrregular(String irregular) {
+        this.irregular = irregular;
+    }
+
+    public String getRegular() {
+        return regular;
+    }
+
+    public void setRegular(String regular) {
+        this.regular = regular;
+    }
 }

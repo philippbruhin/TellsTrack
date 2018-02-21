@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pomodori\nGOTO</string>
+    <string name="From">Von:</string>
+    <string name="To">Nach:</string>
+    <string name="Via">Via:</string>
+    <string name="Button">Suchen</string>
+    <string name="Time">Zeit</string>
+    <string name="Date">Datum</string>
+    <string name="directionChange">Richtung</string>
+    <string name="favoritDefault">SETZE DEINEN FAVORITEN!</string>
+    <string name="pleas_wait_search_connection">Bitte warten, suche Verbindung</string>
+    <string name="isArrivalTime">an</string>
+    <string name="aboutTitel">Über pomodoriGOTO</string>
+    <string name="favoriteDialogTitle">Favoritenverwaltung</string>
+    <string name="setFavorite">Füge einen neuen Favoriten hinzu!</string>
+    <string name="add">hinzufügen</string>
+    <string name="cancel">abbrechen</string>
+    <string name="Ooops">Hoppla!</string>
+    <string name="NoFavAlert">Favorit nicht konfiguriert!\nTippe auf ein Favoritenfeld um es zu bearbeiten!</string>
+    <string name="searchField">SUCHEN</string>
+    <string name="Duration">"Dauer: "</string>
+    <string name="Irregular">Nicht am: "</string>
+    <string name="Regular">"Fährt immer: "</string>
+    <string name="firstclass">"1 Kl.: "</string>
+    <string name="secondclass">" 2 Kl.: "</string>
+    <string name="estimated_occupation">Belegung: </string>
+</resources>
