@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import ch.hsr.tellstrack.model.Connection;
 import ch.hsr.tellstrack.model.ConnectionWrapper;
+import ch.hsr.tellstrack.model.OpenDataTransportException;
 
 /**
  * Created by Alexander on 20/02/2018.
@@ -29,15 +30,16 @@ public class SearchRepository {
     final String baseUrl = "http://transport.opendata.ch/v1/connections";
     ArrayList<Connection> connections = new ArrayList<Connection>();
 
-    public ConnectionWrapper findConnections(String from, String to, String date, String time, String via, boolean isDeparture) {
+    public ConnectionWrapper findConnections(String from, String to, String date, String time, String via, boolean isDeparture) throws OpenDataTransportException {
         String fullUrl = createUrl(from, to, date, time, via, isDeparture);
+
         String jsonResult = GetResponseFromUrl(fullUrl);
 
         Gson gson = new Gson();
         return gson.fromJson(jsonResult, ConnectionWrapper.class);
     }
 
-    private String GetResponseFromUrl(String url) {
+    private String GetResponseFromUrl(String url) throws OpenDataTransportException {
         HttpURLConnection connection = null;
         try {
             connection = (HttpURLConnection) new URL(url).openConnection();
@@ -49,14 +51,12 @@ public class SearchRepository {
             }
             return sb.toString();
         } catch (IOException e) {
-
+            throw new OpenDataTransportException("Could not connect to Open Transport API");
         } finally {
             if (connection != null) {
                 connection.disconnect();
             }
         }
-
-        return null;
     }
 
     private String createUrl(String from, String to, String date, String time, String via, boolean isArrivalTime){
@@ -89,3 +89,4 @@ public class SearchRepository {
         return url;
     }
 }
+
