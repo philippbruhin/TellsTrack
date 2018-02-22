@@ -55,7 +55,7 @@ public class SearchRepository {
 
             url = baseUrl + "?from=" + URLEncoder.encode(from, "UTF-8") + "&to=" + URLEncoder.encode(to, "UTF-8");
 
-            if (via != null && via != "") {
+            if (via != null && !via.isEmpty()) {
                 url += "&via[]=" + via;
             }
 

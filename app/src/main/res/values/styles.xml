@@ -7,5 +7,13 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="AppTheme2" parent="AppTheme">
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
+    <style name="Dialog" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:timePickerDialogTheme">@style/AppTheme2</item>
+        <item name="android:datePickerDialogTheme">@style/AppTheme2</item>
+    </style>
 </resources>

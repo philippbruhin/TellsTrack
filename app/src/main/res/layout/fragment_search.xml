@@ -1,56 +1,97 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainGridLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
 
     <TextView
-        android:id="@+id/searchFromLabel"
+        android:id="@+id/searchFrom"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:gravity="center|left"
         android:text="From" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/searchFromInput"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/searchFromLabel"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/searchFromLabel"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="From" />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/searchFrom" />
 
     <TextView
-        android:id="@+id/searchToLabel"
+        android:id="@+id/searchTo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/searchFromInput"
-        android:layout_marginTop="17dp"
+        android:layout_below="@+id/searchFrom"
         android:gravity="center|left"
         android:text="To" />
 
-    <EditText
+
+    <AutoCompleteTextView
         android:id="@+id/searchToInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchFrom"
+        android:layout_toRightOf="@+id/searchTo" />
+
+    <TextView
+        android:id="@+id/searchVia"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/searchTo"
+        android:gravity="center|left"
+        android:text="Via" />
+
+    <AutoCompleteTextView
+        android:id="@+id/searchViaInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchTo"
+        android:layout_toRightOf="@+id/searchVia"/>
+
+    <Button
+        android:id="@+id/searchTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/searchToLabel"
-        android:layout_alignStart="@+id/searchFromInput"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="To" />
+        android:layout_below="@id/searchVia"
+        android:text="Time"/>
 
+    <CheckBox
+        android:id="@+id/isArrivalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/searchTime"
+        android:layout_alignEnd="@+id/searchChangeDirection"
+        android:layout_alignRight="@+id/searchChangeDirection"
+        android:layout_below="@id/searchVia"
+        android:layout_toRightOf="@+id/searchTime"
+        android:text="Arrival" />
+
+    <Button
+        android:id="@+id/searchDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchTime"
+        android:text="Date"/>
+
+    <Button
+        android:id="@+id/searchChangeDirection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchTime"
+        android:layout_toRightOf="@id/searchDate"
+        android:text="DirectionChange"/>
 
     <Button
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/searchToInput"
-        android:layout_alignStart="@+id/searchToInput"
-        android:layout_below="@+id/searchToInput"
-        android:layout_marginTop="14dp"
+        android:layout_alignEnd="@+id/searchViaInput"
+        android:layout_alignRight="@+id/searchViaInput"
+        android:layout_alignTop="@+id/isArrivalTime"
         android:text="Search" />
+
 </RelativeLayout>
