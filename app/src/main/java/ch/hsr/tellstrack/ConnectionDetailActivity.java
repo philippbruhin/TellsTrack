@@ -9,10 +9,20 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import ch.hsr.tellstrack.model.Connection;
+import ch.hsr.tellstrack.model.Service;
 
 public class ConnectionDetailActivity extends AppCompatActivity {
 
     private Connection connection;
+    private Service service;
+
+    private TextView textViewDeparture;
+    private TextView textViewArrival;
+    private TextView textViewDuration;
+    private TextView textViewRegular;
+    private TextView textViewIrregular;
+    private TextView textViewProducts;
+    private TextView textViewCapacity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,35 +41,34 @@ public class ConnectionDetailActivity extends AppCompatActivity {
     }
 
     public void updateView() {
-        TextView textViewDeparture = (TextView) findViewById(R.id.departure);
-        textViewDeparture.setText(getString(R.string.From) + " " + connection.getFrom().getStation().getName().toString());
 
-        TextView textViewArrival = (TextView) findViewById(R.id.arrival);
-        textViewArrival.setText(getString(R.string.To) + " " + connection.getTo().getStation().getName().toString());
+        Service service = connection.getService();
 
-        TextView textViewDuration = (TextView) findViewById(R.id.duration);
-        textViewDuration.setText(getString(R.string.Duration) + " " + connection.getDuration().toString());
+        textViewDeparture = (TextView) findViewById(R.id.departure);
+        textViewDeparture.setText("From " + connection.getFrom().getStation().getName().toString());
 
-        TextView textViewService = (TextView) findViewById(R.id.service_irregular);
-        String irregular = connection.getService().getIrregular();
-        if (irregular == null) {
-            textViewService.setText("");
-        } else {
-            textViewService.setText(getString(R.string.Irregular) + " " + irregular);
+        textViewArrival = (TextView) findViewById(R.id.arrival);
+        textViewArrival.setText("To " + connection.getTo().getStation().getName().toString());
+
+        textViewDuration = (TextView) findViewById(R.id.duration);
+        textViewDuration.setText("Duration " + connection.getDuration().toString());
+
+        if(service != null && !service.getIrregular().isEmpty())
+        {
+            textViewIrregular = (TextView) findViewById(R.id.service_irregular);
+            textViewIrregular.setText("Irregular " + service.getIrregular());
         }
 
-        TextView textViewServiceRegular = (TextView) findViewById(R.id.service_regular);
-        String regular = connection.getService().getRegular();
-        if (regular == null) {
-            textViewServiceRegular.setText("");
-        } else {
-            textViewServiceRegular.setText(getString(R.string.Regular) + " " + regular);
+        if(service != null && !service.getRegular().isEmpty())
+        {
+            textViewRegular = (TextView) findViewById(R.id.service_regular);
+            textViewRegular.setText("Regular " + service.getRegular());
         }
 
-        TextView textViewProducts = (TextView) findViewById(R.id.products);
+        textViewProducts = (TextView) findViewById(R.id.products);
         textViewProducts.setText(connection.getProducts().toString());
 
-        TextView textViewCapacity = (TextView) findViewById(R.id.capacity);
-        textViewCapacity.setText(getString(R.string.estimated_occupation) + getString(R.string.firstclass) + connection.getCapacity1st() + getString(R.string.secondclass) + connection.getCapacity2nd());
+        textViewCapacity = (TextView) findViewById(R.id.capacity);
+        textViewCapacity.setText("Occupation 1st: " + connection.getCapacity1st() + " 2nd: " + connection.getCapacity2nd());
     }
 }

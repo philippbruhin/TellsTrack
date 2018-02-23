@@ -33,14 +33,21 @@ import ch.hsr.tellstrack.repository.SearchRepository;
 
 public class MainActivity extends AppCompatActivity {
 
-    SearchRepository searchRepository = new SearchRepository();
+    private SearchRepository searchRepository = new SearchRepository();
 
-    View textViewFrom;
-    View textViewTo;
-    Button searchButton;
+    private View textViewFrom;
+    private View textViewTo;
+    private Button searchButton;
+    private Button dateButton;
+    private Button timeButton;
+    private Button changeDirectionButton;
+    private SearchData searchData;
+    private EditText editTextFrom;
+    private EditText editTextTo;
+    private EditText editTextVia;
+    private CheckBox checkBoxArrival;
 
-    Button dateButton;
-    Button timeButton;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         textViewFrom = findViewById(R.id.searchFromInput);
         textViewTo = findViewById(R.id.searchToInput);
 
-        searchButton = (Button) findViewById(R.id.searchButton);
+        searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        dateButton = (Button) findViewById(R.id.searchDate);
+        dateButton = findViewById(R.id.searchDate);
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        timeButton = (Button)findViewById(R.id.searchTime);
+        timeButton = findViewById(R.id.searchTime);
         timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,35 +86,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        changeDirectionButton = findViewById(R.id.searchChangeDirection);
+        changeDirectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText editTextFrom = findViewById(R.id.searchFromInput);
+                EditText editTextTo = findViewById(R.id.searchToInput);
+                String from = editTextFrom.getText().toString();
+                String to = editTextTo.getText().toString();
+                editTextFrom.setText(to);
+                editTextTo.setText(from);
+            }
+        });
+
         setCurrentTimeOn(timeButton);
         setCurrentDateOn(dateButton);
     }
 
     public void setCurrentTimeOn(Button button){
-        Calendar cal = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        String time = sdf.format(cal.getTime());
+        String time = sdf.format(calendar.getTime());
         button.setText(time);
     }
 
     public void setCurrentDateOn(Button button) {
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH) + 1;
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         button.setText(new StringBuilder()
                 .append(year).append("-").append(month).append("-")
                 .append(day));
     }
 
     private SearchData searchDataCollect() {
-        SearchData searchData = new SearchData();
-        EditText editTextFrom = (EditText) findViewById(R.id.searchFromInput);
-        EditText editTextTo = (EditText) findViewById(R.id.searchToInput);
-        EditText editTextVia = (EditText) findViewById(R.id.searchViaInput);
-        Button timeButton = (Button) findViewById(R.id.searchTime);
-        Button dateButton = (Button) findViewById(R.id.searchDate);
-        CheckBox checkBoxArrival = (CheckBox) findViewById(R.id.isArrivalTime);
+        searchData = new SearchData();
+        editTextFrom = findViewById(R.id.searchFromInput);
+        editTextTo = findViewById(R.id.searchToInput);
+        editTextVia = findViewById(R.id.searchViaInput);
+        timeButton = findViewById(R.id.searchTime);
+        dateButton = findViewById(R.id.searchDate);
+        checkBoxArrival = findViewById(R.id.isArrivalTime);
         searchData.setFrom(editTextFrom.getText().toString());
         searchData.setTo(editTextTo.getText().toString());
         searchData.setVia(editTextVia.getText().toString());
@@ -118,11 +138,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class SearchTask extends AsyncTask<SearchData, Void, ConnectionList> {
-
-        @Override
-        protected void onPreExecute() {
-            Resources res = getResources();
-        }
 
         protected ConnectionList doInBackground(SearchData... sda) {
             SearchData sd = sda[0];
@@ -136,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPostExecute(ConnectionList result) {
             Log.d("con", result.getConnections().get(0).toString());
-            final ListView listView = (ListView) findViewById(R.id.searchResultListView);
+            final ListView listView = findViewById(R.id.searchResultListView);
             ResultSearchAdapter resultSearchAdapter = new ResultSearchAdapter(getApplicationContext(), result);
             listView.setAdapter(resultSearchAdapter);
 

@@ -19,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/searchFrom" />
+        android:layout_toRightOf="@+id/searchFrom"
+        android:text="Zürich"/>
 
     <TextView
         android:id="@+id/searchTo"
@@ -35,7 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/searchFrom"
-        android:layout_toRightOf="@+id/searchTo" />
+        android:layout_toRightOf="@+id/searchTo"
+        android:text="Winterthur" />
 
     <TextView
         android:id="@+id/searchVia"
