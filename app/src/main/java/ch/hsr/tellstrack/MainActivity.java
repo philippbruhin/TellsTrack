@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 
+import ch.hsr.tellstrack.adapter.AutoCompleteAdapter;
 import ch.hsr.tellstrack.adapter.ResultSearchAdapter;
 import ch.hsr.tellstrack.model.Connection;
 import ch.hsr.tellstrack.model.ConnectionList;
@@ -35,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     private SearchRepository searchRepository = new SearchRepository();
 
-    private View textViewFrom;
-    private View textViewTo;
     private Button searchButton;
     private Button dateButton;
     private Button timeButton;
@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextVia;
     private CheckBox checkBoxArrival;
 
+    private AutoCompleteTextView textViewVia;
+    private AutoCompleteTextView textViewTo;
+    private AutoCompleteTextView textViewFrom;
+
     private Calendar calendar;
 
     @Override
@@ -54,10 +58,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textViewFrom = findViewById(R.id.searchFromInput);
-        textViewTo = findViewById(R.id.searchToInput);
+        textViewFrom            = findViewById(R.id.searchFromInput);
+        textViewTo              = findViewById(R.id.searchToInput);
+        textViewVia             = findViewById(R.id.searchViaInput);
+        searchButton            = findViewById(R.id.searchButton);
+        dateButton              = findViewById(R.id.searchDate);
+        timeButton              = findViewById(R.id.searchTime);
+        changeDirectionButton   = findViewById(R.id.searchChangeDirection);
 
-        searchButton = findViewById(R.id.searchButton);
+
+        textViewFrom.setAdapter(new AutoCompleteAdapter(this));
+        textViewTo.setAdapter(new AutoCompleteAdapter(this));
+        textViewVia.setAdapter(new AutoCompleteAdapter(this));
+
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,9 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        dateButton = findViewById(R.id.searchDate);
-        dateButton.setOnClickListener(new View.OnClickListener() {
+       dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
@@ -77,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        timeButton = findViewById(R.id.searchTime);
         timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        changeDirectionButton = findViewById(R.id.searchChangeDirection);
         changeDirectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private SearchData searchDataCollect() {
+
         searchData = new SearchData();
         editTextFrom = findViewById(R.id.searchFromInput);
         editTextTo = findViewById(R.id.searchToInput);
@@ -128,12 +138,14 @@ public class MainActivity extends AppCompatActivity {
         timeButton = findViewById(R.id.searchTime);
         dateButton = findViewById(R.id.searchDate);
         checkBoxArrival = findViewById(R.id.isArrivalTime);
+
         searchData.setFrom(editTextFrom.getText().toString());
         searchData.setTo(editTextTo.getText().toString());
         searchData.setVia(editTextVia.getText().toString());
         searchData.setTime(timeButton.getText().toString());
         searchData.setDate(dateButton.getText().toString());
         searchData.setIsArrival(checkBoxArrival.isChecked());
+
         return searchData;
     }
 
@@ -150,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(ConnectionList result) {
-            Log.d("con", result.getConnections().get(0).toString());
+
             final ListView listView = findViewById(R.id.searchResultListView);
             ResultSearchAdapter resultSearchAdapter = new ResultSearchAdapter(getApplicationContext(), result);
             listView.setAdapter(resultSearchAdapter);
