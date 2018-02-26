@@ -24,6 +24,8 @@ public class ConnectionDetailActivity extends AppCompatActivity {
     private TextView textViewProducts;
     private TextView textViewCapacity;
 
+    private Toolbar toolBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +33,10 @@ public class ConnectionDetailActivity extends AppCompatActivity {
         String json = getIntent().getStringExtra("connection");
         Gson gson = new Gson();
         connection = gson.fromJson(json, Connection.class);
-        Log.d("detail", "onCreate: " + connection.getFrom().getStation().toString());
+
         updateView();
 
-        Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
+        toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
