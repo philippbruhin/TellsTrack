@@ -25,6 +25,10 @@ public class ResultSearchAdapter extends BaseAdapter {
     private Context context;
     private ConnectionList connectionList;
 
+    private TextView idTextView;
+    private TextView arrivalTextView;
+    private TextView departureTextView;
+
     public ResultSearchAdapter(Context context, ConnectionList connectionList) {
         this.context = context;
         this.connectionList = connectionList;
@@ -52,29 +56,26 @@ public class ResultSearchAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.listitem_search_result, parent, false);
         }
+
         Connection connection = (Connection) getItem(position);
 
         String departureTime = connection.getFrom().getDeparture().toString();
         int div = departureTime.indexOf('T');
         departureTime = departureTime.substring(div + 1, div + 6);
-        String departureDate = connection.getFrom().getDeparture().toString();
-        departureDate = departureDate.substring(0, div);
-        departureDate = "";
-        TextView departureTextView = (TextView) convertView.findViewById(R.id.departure);
-        departureTextView.setText(departureTime + " " + departureDate + " " + connection.getFrom().getStation().getName());
+
+        departureTextView = convertView.findViewById(R.id.departure);
+        departureTextView.setText(departureTime + " " + connection.getFrom().getStation().getName());
 
         String arrivalTime = connection.getTo().getArrival().toString();
         div = arrivalTime.indexOf('T');
         arrivalTime = arrivalTime.substring(div + 1, div + 6);
-        String arrivalDate = connection.getTo().getArrival().toString();
-        arrivalDate = arrivalDate.substring(0, div);
-        arrivalDate = "";
-        TextView arrivalTextView = (TextView) convertView.findViewById(R.id.arrival);
-        arrivalTextView.setText(arrivalTime + " " + arrivalDate + " " + connection.getTo().getStation().getName());
 
-        TextView idTextView = (TextView) convertView.findViewById(R.id.departureContdown);
-        String s = departureCountdown(connection);
-        idTextView.setText(s);
+        arrivalTextView = convertView.findViewById(R.id.arrival);
+        arrivalTextView.setText(arrivalTime + " " + connection.getTo().getStation().getName());
+
+        idTextView = convertView.findViewById(R.id.departureContdown);
+        String countdown = departureCountdown(connection);
+        idTextView.setText(countdown);
 
         return convertView;
     }
@@ -84,7 +85,6 @@ public class ResultSearchAdapter extends BaseAdapter {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
         Date current = calendar.getTime();
-        String cur = sdf.format(current);
         String departure = connection.getFrom().getDeparture();
         TimeUtil timeUtil = new TimeUtil();
         try {

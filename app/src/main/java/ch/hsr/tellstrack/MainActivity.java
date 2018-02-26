@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Calendar calendar;
 
+    private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPostExecute(ConnectionList result) {
 
-            final ListView listView = findViewById(R.id.searchResultListView);
+            listView = findViewById(R.id.searchResultListView);
             ResultSearchAdapter resultSearchAdapter = new ResultSearchAdapter(getApplicationContext(), result);
             listView.setAdapter(resultSearchAdapter);
 
@@ -171,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Connection connection = (Connection) parent.getItemAtPosition(position);
-                    GsonBuilder gsonBuilder = new GsonBuilder();
                     Gson gson = new Gson();
                     Intent intent = new Intent(getApplicationContext(), ConnectionDetailActivity.class);
                     String json = gson.toJson(connection);

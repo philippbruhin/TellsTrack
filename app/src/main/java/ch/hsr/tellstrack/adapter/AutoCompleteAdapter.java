@@ -21,27 +21,28 @@ import java.util.List;
 
 public class AutoCompleteAdapter extends ArrayAdapter<Address> implements Filterable {
 
-    private LayoutInflater layoutInflator;
+    private LayoutInflater layoutInflater;
     private Geocoder geocoder;
     private StringBuilder outputString = new StringBuilder();
 
+    private TextView textView;
+
     public AutoCompleteAdapter(final Context context) {
         super(context, -1);
-        layoutInflator = LayoutInflater.from(context);
+        layoutInflater = LayoutInflater.from(context);
         geocoder = new Geocoder(context);
     }
 
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
-        final TextView tv;
         if (convertView != null) {
-            tv = (TextView) convertView;
+            textView = (TextView) convertView;
         } else {
-            tv = (TextView) layoutInflator.inflate(android.R.layout.simple_dropdown_item_1line, parent, false);
+            textView = (TextView) layoutInflater.inflate(android.R.layout.simple_dropdown_item_1line, parent, false);
         }
 
-        tv.setText(createFormattedAddressFromAddress(getItem(position)));
-        return tv;
+        textView.setText(createFormattedAddressFromAddress(getItem(position)));
+        return textView;
     }
 
     private String createFormattedAddressFromAddress(final Address address) {
@@ -65,13 +66,13 @@ public class AutoCompleteAdapter extends ArrayAdapter<Address> implements Filter
                 List<Address> addressList = null;
                 if (constraint != null) {
                     try {
-                        addressList = geocoder.getFromLocationName((String) constraint + ", Switzerland", 5);
+                        addressList = geocoder.getFromLocationName(constraint + ", Switzerland", 5);
                     } catch (IOException e) {
 
                     }
                 }
                 if (addressList == null) {
-                    addressList = new ArrayList<Address>();
+                    addressList = new ArrayList<>();
                 }
 
                 final FilterResults filterResults = new FilterResults();

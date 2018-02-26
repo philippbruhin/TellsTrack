@@ -14,7 +14,6 @@ import ch.hsr.tellstrack.model.Service;
 public class ConnectionDetailActivity extends AppCompatActivity {
 
     private Connection connection;
-    private Service service;
 
     private TextView textViewDeparture;
     private TextView textViewArrival;
@@ -46,31 +45,31 @@ public class ConnectionDetailActivity extends AppCompatActivity {
 
         Service service = connection.getService();
 
-        textViewDeparture = (TextView) findViewById(R.id.departure);
+        textViewDeparture = findViewById(R.id.departure);
         textViewDeparture.setText("From " + connection.getFrom().getStation().getName().toString());
 
-        textViewArrival = (TextView) findViewById(R.id.arrival);
+        textViewArrival = findViewById(R.id.arrival);
         textViewArrival.setText("To " + connection.getTo().getStation().getName().toString());
 
-        textViewDuration = (TextView) findViewById(R.id.duration);
+        textViewDuration = findViewById(R.id.duration);
         textViewDuration.setText("Duration " + connection.getDuration().toString());
 
         if(service != null && !service.getIrregular().isEmpty())
         {
-            textViewIrregular = (TextView) findViewById(R.id.service_irregular);
+            textViewIrregular = findViewById(R.id.service_irregular);
             textViewIrregular.setText("Irregular " + service.getIrregular());
         }
 
         if(service != null && !service.getRegular().isEmpty())
         {
-            textViewRegular = (TextView) findViewById(R.id.service_regular);
+            textViewRegular = findViewById(R.id.service_regular);
             textViewRegular.setText("Regular " + service.getRegular());
         }
 
-        textViewProducts = (TextView) findViewById(R.id.products);
+        textViewProducts = findViewById(R.id.products);
         textViewProducts.setText(connection.getProducts().toString());
 
-        textViewCapacity = (TextView) findViewById(R.id.capacity);
+        textViewCapacity = findViewById(R.id.capacity);
         textViewCapacity.setText("Occupation 1st: " + connection.getCapacity1st() + " 2nd: " + connection.getCapacity2nd());
     }
 }

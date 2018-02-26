@@ -23,8 +23,7 @@ import ch.hsr.tellstrack.model.OpenDataTransportException;
 
 public class SearchRepository {
 
-    final String baseUrl = "http://transport.opendata.ch/v1/connections";
-    ArrayList<Connection> connections = new ArrayList<Connection>();
+    private final String baseUrl = "http://transport.opendata.ch/v1/connections";
 
     public ConnectionList findConnections(String from, String to, String date, String time, String via, boolean isDeparture) throws OpenDataTransportException {
         String fullUrl = createUrl(from, to, date, time, via, isDeparture);
@@ -43,7 +42,7 @@ public class SearchRepository {
         try {
             json = client.execute(request, handler);
         } catch (IOException ex) {
-            String t = "t";
+
         }
         return json;
     }
