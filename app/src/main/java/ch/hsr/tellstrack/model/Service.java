@@ -2,6 +2,9 @@ package ch.hsr.tellstrack.model;
 
 /**
  * Created by Alexander on 20/02/2018.
+ *
+ * Documentation: https://transport.opendata.ch/docs.html#service
+ * Operation information for a connection.
  */
 
 public class Service {

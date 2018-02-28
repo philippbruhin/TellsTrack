@@ -2,6 +2,9 @@ package ch.hsr.tellstrack.model;
 
 /**
  * Created by Alexander on 20/02/2018.
+ *
+ * https://transport.opendata.ch/docs.html#journey
+ * The actual transportation of a section, e.g. a bus or a train between two stations.
  */
 
 public class Journey {

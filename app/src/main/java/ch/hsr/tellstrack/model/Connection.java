@@ -4,6 +4,9 @@ import java.util.List;
 
 /**
  * Created by Alexander on 20/02/2018.
+ *
+ * https://transport.opendata.ch/docs.html#connection
+ * A connection represents a possible journey between two locations.
  */
 
 public class Connection {
