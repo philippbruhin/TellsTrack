@@ -1,4 +1,4 @@
-package ch.hsr.tellstrack.model;
+package ch.hsr.tellstrack.repository;
 
 /**
  * Created by Alexander on 20/02/2018.

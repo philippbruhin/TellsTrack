@@ -11,11 +11,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
-import ch.hsr.tellstrack.model.Connection;
 import ch.hsr.tellstrack.model.ConnectionList;
-import ch.hsr.tellstrack.model.OpenDataTransportException;
 
 /**
  * Created by Alexander on 20/02/2018.

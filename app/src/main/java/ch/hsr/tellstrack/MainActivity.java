@@ -3,11 +3,9 @@ package ch.hsr.tellstrack;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -18,18 +16,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Calendar;
-import java.util.Date;
 
 import ch.hsr.tellstrack.adapter.AutoCompleteAdapter;
 import ch.hsr.tellstrack.adapter.ResultSearchAdapter;
 import ch.hsr.tellstrack.model.Connection;
 import ch.hsr.tellstrack.model.ConnectionList;
-import ch.hsr.tellstrack.model.OpenDataTransportException;
 import ch.hsr.tellstrack.model.SearchData;
 import ch.hsr.tellstrack.repository.SearchRepository;
 
