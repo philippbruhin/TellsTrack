@@ -1,7 +1,9 @@
 <resources>
 
     <string name="about">Über</string>
-    <string name="app_name">TellsTrack</string>
+    <string name="app_description">Short description about this app.</string>
+    <string name="app_name">TellsTrack 2.0</string>
+    <string name="developer">Entwickler</string>
     <string name="timepicker">Datumauswahl</string>
 
     <string name="timetable">Fahrplan</string>
