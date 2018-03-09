@@ -1,7 +1,6 @@
 package ch.hsr.tellstrack.repository;
 
 import com.google.gson.Gson;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,39 +12,33 @@ import java.net.URLEncoder;
 import ch.hsr.tellstrack.model.ConnectionList;
 import ch.hsr.tellstrack.model.StationList;
 
-/**
- * Created by philipp.bruhin on 01.03.2018.
- */
+public class OpenDataTransportRepository {
 
-public class OpenDataTransportRepository implements ITransportRepository {
-
-    @Override
     public StationList findStations(String query) throws OpenDataTransportException {
-        String url = buildFindStationsUrl(query);
+        String url = FindStationsUrl(query);
         String json = GetJson(url);
 
+        // convert JSON into Java Object
         Gson gson = new Gson();
+        // Deserializes JSON
         return gson.fromJson(json, StationList.class);
     }
 
-    private String buildFindStationsUrl(String query) {
+    private String FindStationsUrl(String query) {
         String url = null;
         try {
             url = "http://transport.opendata.ch/v1/locations?query=" + URLEncoder.encode(query, "UTF-8");
         } catch (UnsupportedEncodingException e) {
         }
-
         return url;
     }
 
-    @Override
     public ConnectionList searchConnections(String from, String to) throws OpenDataTransportException {
         return searchConnections(from, to, null, null, null, false);
     }
 
-    @Override
     public ConnectionList searchConnections(String from, String to, String via, String date, String time, Boolean isArrivalTime) throws OpenDataTransportException {
-        String url = buildSearchConnectionUrl(from, to, via, date, time, isArrivalTime);
+        String url =SearchConnectionUrl(from, to, via, date, time, isArrivalTime);
         String json = GetJson(url);
 
         Gson gson = new Gson();
@@ -64,7 +57,7 @@ public class OpenDataTransportRepository implements ITransportRepository {
             }
             return sb.toString();
         } catch (IOException e) {
-            throw new OpenDataTransportException("Could not connect to Open Transport API");
+            throw new OpenDataTransportException("Could not connect to transport.opendata.ch");
         } finally {
             if (connection != null) {
                 connection.disconnect();
@@ -72,7 +65,7 @@ public class OpenDataTransportRepository implements ITransportRepository {
         }
     }
 
-    private String buildSearchConnectionUrl(String from, String to, String via, String date, String time, Boolean isArrivalTime) {
+    private String SearchConnectionUrl(String from, String to, String via, String date, String time, Boolean isArrivalTime) {
         String url = null;
         try {
             url = "http://transport.opendata.ch/v1/connections?from=" + URLEncoder.encode(from, "UTF-8") + "&to=" + URLEncoder.encode(to, "UTF-8");
@@ -98,4 +91,6 @@ public class OpenDataTransportRepository implements ITransportRepository {
         }
         return url;
     }
+
+
 }

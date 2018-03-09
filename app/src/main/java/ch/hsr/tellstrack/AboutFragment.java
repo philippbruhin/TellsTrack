@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 public class AboutFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         if (container != null) {
             container.removeAllViews();
         }
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        return inflater.inflate(R.layout.content_about, container, false);
     }
 }

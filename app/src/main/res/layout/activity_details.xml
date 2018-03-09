@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ch.hsr.tellstrack.MainActivity">
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.design.widget.NavigationView
+    android:fitsSystemWindows="true"
+    tools:context="ch.hsr.tellstrack.DetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -21,20 +19,8 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.NavigationView>
+    </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/content_holder"
-        >
-        <!-- Fragment that will be displayed on startup -->
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="ch.hsr.tellstrack.TimetableFragment"
-            tools:layout="@layout/content_timetable" />
-    </FrameLayout>
+    <include layout="@layout/content_details" />
 
-</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

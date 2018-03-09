@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_timetable"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingBottom="1dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="2dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ch.hsr.tellstrack.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <RelativeLayout
+        android:id="@+id/rlSearchBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/background_light">
+
+        <FrameLayout
+            android:id="@+id/flFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btnSearchConnection"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ch.hsr.tellstrack.controls.DelayAutoCompleteTextView
+                android:id="@+id/txtFrom"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="false"
+                android:layout_centerVertical="false"
+                android:layout_marginTop="15dp"
+                android:imeOptions="flagNoExtractUi|actionSearch"
+                android:inputType="textCapSentences"
+                android:paddingRight="20dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/FromLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/From" />
+
+            <ProgressBar
+                android:id="@+id/pb_loading_indicatorFrom"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="0dp"
+                android:indeterminateDrawable="@drawable/progress"
+                android:visibility="gone" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btnSearchConnection"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/flFrom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/ToLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:text="@string/To" />
+
+            <ProgressBar
+                android:id="@+id/pb_loading_indicatorTo"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="0dp"
+                android:indeterminateDrawable="@drawable/progress"
+                android:visibility="gone" />
+
+            <ch.hsr.tellstrack.controls.DelayAutoCompleteTextView
+                android:id="@+id/txtTo"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:imeOptions="flagNoExtractUi|actionSearch"
+                android:inputType="textCapSentences"
+                android:paddingRight="20dp" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/flTo"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
+
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayout02"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_alignParentBottom="true">
+
+                <Button
+                    android:id="@+id/btnSetWhen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="3"
+                    android:text="Abfahrt"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+
+                <ImageButton
+                    android:id="@+id/btnReverseConnection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_cached_black_24dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btnSearchConnection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/flTime"
+            android:text="@string/search_connection" />
+
+
+
+        <View
+            android:id="@+id/divisorBelowSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btnSearchConnection"
+            android:background="#9f9f9f" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlSearchBox">
+
+
+
+        <FrameLayout
+            android:id="@+id/flVerbindungen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+            <ProgressBar
+                android:id="@+id/pb_loading_indicatorListConnections"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_vertical|right"
+                android:indeterminateDrawable="@drawable/progress"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/listConnections"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/btnSearchConnection"
+                android:scrollbars="none"/>
+        </FrameLayout>
+        <RelativeLayout
+            android:id="@+id/rlDateTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/tvDateTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Departure Date"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
