@@ -33,7 +33,7 @@ public class DetailsActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.content_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_details, container, false);
         final ArrayList<ConnectionSection> ConnectionSections = (ArrayList<ConnectionSection>)( this.getActivity().getIntent().getBundleExtra("bundle").getSerializable("connections"));
 
         Calendar departure = Calendar.getInstance();

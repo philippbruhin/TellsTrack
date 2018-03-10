@@ -22,10 +22,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         setContentView(R.layout.content_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.ConnectionDetails);
+        //toolbar.setTitle(R.string.ConnectionDetails);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
