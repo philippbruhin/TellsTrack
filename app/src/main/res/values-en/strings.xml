@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">About TellsTrack</string>
+    <string name="app_description">William Tell is a folk hero of Switzerland whose legend is recorded more than 500 years ago. Tell was an expert crossbow marksman who gave the Swiss their freedom back. In this smartphone app he lives on and guides you on your trip through beautiful Switzerland.</string>
+    <string name="app_name">TellsTrack 2.0</string>
+    <string name="developer">Developer</string>
+    <string name="timetable">Timetable</string>
+    <string name="navigation_drawer_open">Open sidebar</string>
+    <string name="navigation_drawer_close">Close sidebar</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="Arrival">Arrival</string>
+    <string name="Departure">Departure</string>
+    <string name="Direction">Direction</string>
+    <string name="Platform">Platform </string>
+    <string name="Track_section">Track sections</string>
+    <string name="Tag">"Day "</string>
+    <string name="From">From</string>
+    <string name="To">To</string>
+    <string name="search_connection">Search connection</string>
+    <string name="Date">Date</string>
+    <string name="ConnectionDetails">Track details</string>
+    <string name="version">Version 1.0</string>
+    <string name="team">Team</string>
+    <string name="time">Time</string>
+    <string name="travel_time">Time and date</string>
+</resources>

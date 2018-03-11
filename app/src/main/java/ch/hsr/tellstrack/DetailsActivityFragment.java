@@ -53,7 +53,7 @@ public class DetailsActivityFragment extends Fragment {
         String temp =  ConnectionSections.get(0).Duration;
         temp = temp.substring(0, temp.indexOf('d'));
         int iDay = Integer.valueOf(temp);
-        String strDay =(iDay > 0) ?  String.valueOf(iDay) + getString(R.string.abkTag) : "";
+        String strDay =(iDay > 0) ?  String.valueOf(iDay) + getString(R.string.Tag) : "";
 
         ((TextView) view.findViewById(R.id.tvdDuration)).setText(strDay + sdfDuration.format(duration.getTime()));
         ((TextView) view.findViewById(R.id.tvdProducts)).setText(ConnectionSections.get(0).Products);

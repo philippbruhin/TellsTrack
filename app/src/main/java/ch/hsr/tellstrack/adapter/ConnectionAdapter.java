@@ -101,7 +101,7 @@ public class ConnectionAdapter extends ArrayAdapter<Connection> {
         String temp =  connection.getDuration();
         temp = temp.substring(0, temp.indexOf('d'));
         int iDay = Integer.valueOf(temp);
-        String strDay =(iDay > 0) ?  String.valueOf(iDay) + convertView.getResources().getString(R.string.abkTag) : "";
+        String strDay =(iDay > 0) ?  String.valueOf(iDay) + convertView.getResources().getString(R.string.Tag) : "";
 
         tvDuration.setText(new StringBuilder().append(strDay).append(sdfDuration.format(duration.getTime())).toString());
         tvDepartureDate.setText(sdfDate.format(departure.getTime()));
