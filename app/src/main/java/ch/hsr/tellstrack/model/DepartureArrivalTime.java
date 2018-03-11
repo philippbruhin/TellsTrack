@@ -12,7 +12,7 @@ public class DepartureArrivalTime implements Serializable {
     public Calendar calendar;
     public Boolean isArrival;
     private Context context;
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy / HH:mm");
 
     public DepartureArrivalTime(Context c)
     {
@@ -25,7 +25,7 @@ public class DepartureArrivalTime implements Serializable {
     public String toString()
     {
         String output =  isArrival ? context.getString(R.string.Arrival) : context.getString(R.string.Departure);
-        return output + " " + simpleDateFormat.format(calendar.getTime());
+        return output + " / " + simpleDateFormat.format(calendar.getTime());
 
     }
 }

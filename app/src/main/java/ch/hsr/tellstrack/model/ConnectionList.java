@@ -8,13 +8,13 @@ import java.util.List;
 
 public class ConnectionList{
 
-    private List<Connection> connections;
+    public List<Connection> connections;
 
     public List<Connection> getConnections() {
         return connections;
     }
 
-    public void setConnections(List<Connection> connections) {
+    private void setConnections(List<Connection> connections) {
         this.connections = connections;
     }
 

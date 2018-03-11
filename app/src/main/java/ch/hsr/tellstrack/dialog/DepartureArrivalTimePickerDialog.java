@@ -86,13 +86,19 @@ public class DepartureArrivalTimePickerDialog
         }
 
     private void SetupDialog(DepartureArrivalTime departureArrivalTime,  View view) {
-        ToggleButton tglDeparture= (ToggleButton) view.findViewById(R.id.toggleButtonAbfahrt);
-        ToggleButton tglArrival= (ToggleButton) view.findViewById(R.id.toggleButtonAnkunft);
-        DatePicker datepicker= (DatePicker) view.findViewById(R.id.date_picker);
-        TimePicker timepicker= (TimePicker) view.findViewById(R.id.time_picker);
+        ToggleButton tglDeparture =  view.findViewById(R.id.toggleButtonAbfahrt);
+        ToggleButton tglArrival =  view.findViewById(R.id.toggleButtonAnkunft);
+        DatePicker datepicker = view.findViewById(R.id.date_picker);
+        TimePicker timepicker = view.findViewById(R.id.time_picker);
+
         tglArrival.setChecked(departureArrivalTime.isArrival);
         tglDeparture.setChecked(!departureArrivalTime.isArrival);
-        datepicker.updateDate(departureArrivalTime.calendar.get(Calendar.YEAR),departureArrivalTime.calendar.get(Calendar.MONTH), departureArrivalTime.calendar.get(Calendar.DAY_OF_MONTH));
+
+        datepicker.updateDate(
+                departureArrivalTime.calendar.get(Calendar.YEAR),
+                departureArrivalTime.calendar.get(Calendar.MONTH),
+                departureArrivalTime.calendar.get(Calendar.DAY_OF_MONTH));
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             timepicker.setHour(departureArrivalTime.calendar.get(Calendar.HOUR_OF_DAY));
             timepicker.setMinute(departureArrivalTime.calendar.get(Calendar.MINUTE));
@@ -107,8 +113,8 @@ public class DepartureArrivalTimePickerDialog
 
 
     private void SetupListener( View view) {
-        final ToggleButton tglDeparture= (ToggleButton) view.findViewById(R.id.toggleButtonAbfahrt);
-        final ToggleButton tglArrival= (ToggleButton) view.findViewById(R.id.toggleButtonAnkunft);
+        final ToggleButton tglDeparture=  view.findViewById(R.id.toggleButtonAbfahrt);
+        final ToggleButton tglArrival= view.findViewById(R.id.toggleButtonAnkunft);
         tglDeparture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
