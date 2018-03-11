@@ -68,7 +68,6 @@ public class ConnectionSectionAdapter extends ArrayAdapter<ConnectionSection> {
             ((TextView) convertView.findViewById(R.id.tvdetProgDep)).setText("");
         }
 
-
         ((TextView) convertView.findViewById(R.id.tvdetArrTime)).setText(sdfTime.format(arrival.getTime()));
         ((TextView) convertView.findViewById(R.id.tvdetArrival)).setText(connectionSection.Arrival);
         ((TextView) convertView.findViewById(R.id.tvdetPlatfArr)).setText(connectionSection.ArrivalPlatform);
@@ -77,45 +76,6 @@ public class ConnectionSectionAdapter extends ArrayAdapter<ConnectionSection> {
             ((TextView) convertView.findViewById(R.id.tvdetProgArr)).setText(sdfTime.format(prognosisArr.getTime()));
         } else {
             ((TextView) convertView.findViewById(R.id.tvdetProgArr)).setText("");
-        }
-
-        ImageView imCap1 = convertView.findViewById(R.id.imCap1);
-        ImageView imCap2 = convertView.findViewById(R.id.imCap2);
-
-        if (connectionSection.Capacity1st != null) {
-            switch (Integer.parseInt(connectionSection.Capacity1st)) {
-                case 1:
-                    imCap1.setImageResource(R.mipmap.cap_1);
-                    break;
-                case 2:
-                    imCap1.setImageResource(R.mipmap.cap_2);
-                    break;
-                case 3:
-                    imCap1.setImageResource(R.mipmap.cap_3);
-                    break;
-                default:
-                    imCap1.setImageResource(android.R.color.transparent);
-            }
-        } else {
-            imCap1.setImageResource(android.R.color.transparent);
-        }
-
-        if (connectionSection.Capacity2nd != null) {
-            switch (Integer.parseInt(connectionSection.Capacity2nd)) {
-                case 1:
-                    imCap2.setImageResource(R.mipmap.cap_1);
-                    break;
-                case 2:
-                    imCap2.setImageResource(R.mipmap.cap_2);
-                    break;
-                case 3:
-                    imCap2.setImageResource(R.mipmap.cap_3);
-                    break;
-                default:
-                    imCap2.setImageResource(android.R.color.transparent);
-            }
-        } else {
-            imCap2.setImageResource(android.R.color.transparent);
         }
 
         ((TextView) convertView.findViewById(R.id.tvdetName)).setText(connectionSection.Name);

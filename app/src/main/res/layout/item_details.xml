@@ -111,50 +111,6 @@
             android:textSize="16dp"
             android:layout_toStartOf="@+id/tvdetPlatfArr" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/cap_1"
-            android:id="@+id/imCap1"
-            android:contentDescription="capacity 1st class"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
-            android:layout_alignBottom="@+id/textView11"
-            android:layout_marginBottom="5dp"
-            android:layout_toStartOf="@+id/textView13"
-            android:layout_marginRight="10dp" />
-
-        <TextView
-            android:text="1. "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView11"
-            android:layout_alignBaseline="@+id/tvdetName"
-            android:layout_alignBottom="@+id/tvdetName"
-            android:layout_toStartOf="@+id/imCap1"
-            android:layout_marginRight="10dp" />
-
-        <TextView
-            android:text="2."
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView13"
-            android:layout_alignBottom="@+id/textView11"
-            android:layout_toStartOf="@+id/imCap2"
-            android:layout_marginRight="10dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/cap_1"
-            android:id="@+id/imCap2"
-            android:contentDescription="capacity 2nd class"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
-            android:layout_alignBottom="@+id/textView13"
-            android:layout_alignEnd="@+id/tvdetPatfDep"
-            android:layout_marginBottom="5dp" />
-
         <TextView
             android:text="EndTo"
             android:layout_width="wrap_content"

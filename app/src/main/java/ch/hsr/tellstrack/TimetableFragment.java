@@ -95,6 +95,7 @@ public class TimetableFragment extends Fragment {
     private void UpdateWhenButton(Button btn) {
         btn.setText(departureArrivalTime.toString());
     }
+
     private void SetupListener() {
         Button btn = TimetableView.findViewById(R.id.btnSearchConnection);
         btn.setOnClickListener(new View.OnClickListener() {

@@ -3,10 +3,6 @@ package ch.hsr.tellstrack.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import ch.hsr.tellstrack.model.Connection;
-import ch.hsr.tellstrack.model.Section;
-
-
 public class ConnectionDetail implements Serializable {
 
     public ArrayList<ConnectionSection> ConnectionSections;

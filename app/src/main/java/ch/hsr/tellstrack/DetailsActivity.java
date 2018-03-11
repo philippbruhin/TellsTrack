@@ -1,18 +1,17 @@
 package ch.hsr.tellstrack;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
-import ch.hsr.tellstrack.model.ConnectionSection;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.content_details);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = getToolbarView(DetailsActivity.this);
         setSupportActionBar(toolbar);
     }
 
@@ -35,4 +34,28 @@ public class DetailsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Nullable public Toolbar getToolbarView(@NonNull Context context) {
+        Activity activity = ((Activity) context);
+
+        int resId = context.getResources().getIdentifier("action_bar", "id", "android");
+
+        Toolbar toolbar = activity.findViewById(resId);
+        if (toolbar == null) {
+            toolbar = findToolbar((ViewGroup) activity.findViewById(android.R.id.content));
+        }
+        return toolbar;
+    }
+
+    private Toolbar findToolbar(@NonNull ViewGroup viewGroup) {
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
+            View view = viewGroup.getChildAt(i);
+            if (view.getClass().getName().equals("android.support.v7.widget.Toolbar")
+                    || view.getClass().getName().equals("android.widget.Toolbar")) {
+                return (Toolbar) view;
+            } else if (view instanceof ViewGroup) {
+                return findToolbar((ViewGroup) view);
+            }
+        }
+        return null;
+    }
 }
