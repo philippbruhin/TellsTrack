@@ -33,7 +33,6 @@ public class ConnectionSectionAdapter extends ArrayAdapter<ConnectionSection> {
 
         ConnectionSection connectionSection = getItem(position);
 
-        // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_details, parent, false);
         }
@@ -80,8 +79,8 @@ public class ConnectionSectionAdapter extends ArrayAdapter<ConnectionSection> {
             ((TextView) convertView.findViewById(R.id.tvdetProgArr)).setText("");
         }
 
-        ImageView imCap1 = (ImageView) convertView.findViewById(R.id.imCap1);
-        ImageView imCap2 = (ImageView) convertView.findViewById(R.id.imCap2);
+        ImageView imCap1 = convertView.findViewById(R.id.imCap1);
+        ImageView imCap2 = convertView.findViewById(R.id.imCap2);
 
         if (connectionSection.Capacity1st != null) {
             switch (Integer.parseInt(connectionSection.Capacity1st)) {
@@ -121,9 +120,7 @@ public class ConnectionSectionAdapter extends ArrayAdapter<ConnectionSection> {
 
         ((TextView) convertView.findViewById(R.id.tvdetName)).setText(connectionSection.Name);
         ((TextView) convertView.findViewById(R.id.tvdetEndTo)).setText(connectionSection.To);
-//        ((TextView) convertView.findViewById(R.id.tvdetCatCode)).setText(connectionSection.CategoryCode);
 
-        // Return the completed view to render on screen
         return convertView;
     }
 }

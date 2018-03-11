@@ -31,10 +31,6 @@ public class DelayAutoCompleteTextView extends AutoCompleteTextView {
         mLoadingIndicator = progressBar;
     }
 
-    public void setAutoCompleteDelay(int autoCompleteDelay) {
-        mAutoCompleteDelay = autoCompleteDelay;
-    }
-
     @Override
     protected void performFiltering(CharSequence text, int keyCode) {
         if (_indicatorActive) {

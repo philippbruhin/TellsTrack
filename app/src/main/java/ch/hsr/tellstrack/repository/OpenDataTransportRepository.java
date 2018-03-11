@@ -18,9 +18,7 @@ public class OpenDataTransportRepository {
         String url = FindStationsUrl(query);
         String json = GetJson(url);
 
-        // convert JSON into Java Object
         Gson gson = new Gson();
-        // Deserializes JSON
         return gson.fromJson(json, StationList.class);
     }
 
@@ -31,10 +29,6 @@ public class OpenDataTransportRepository {
         } catch (UnsupportedEncodingException e) {
         }
         return url;
-    }
-
-    public ConnectionList searchConnections(String from, String to) throws OpenDataTransportException {
-        return searchConnections(from, to, null, null, null, false);
     }
 
     public ConnectionList searchConnections(String from, String to, String via, String date, String time, Boolean isArrivalTime) throws OpenDataTransportException {

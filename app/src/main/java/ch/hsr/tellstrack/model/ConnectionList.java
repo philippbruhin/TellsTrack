@@ -14,7 +14,7 @@ public class ConnectionList{
         return connections;
     }
 
-    private void setConnections(List<Connection> connections) {
+    public void setConnections(List<Connection> connections) {
         this.connections = connections;
     }
 

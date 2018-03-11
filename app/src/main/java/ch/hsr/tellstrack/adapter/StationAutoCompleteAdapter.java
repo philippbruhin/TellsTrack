@@ -60,12 +60,11 @@ public class StationAutoCompleteAdapter extends BaseAdapter implements Filterabl
                 if (constraint != null) {
                     List<Station> stations = null;
                     try {
-                        stations = findStations(mContext, constraint.toString());
+                        stations = findStations(constraint.toString());
                     } catch (OpenDataTransportException e) {
                         e.printStackTrace();
                     }
 
-                    // Assign the data to the FilterResults
                     filterResults.values = stations;
                     filterResults.count = stations.size();
                 }
@@ -84,7 +83,7 @@ public class StationAutoCompleteAdapter extends BaseAdapter implements Filterabl
         return filter;
     }
 
-    private List<Station> findStations(Context context, String station) throws OpenDataTransportException {
+    private List<Station> findStations(String station) throws OpenDataTransportException {
         OpenDataTransportRepository repo = new OpenDataTransportRepository();
         return repo.findStations(station).getStations();
     }

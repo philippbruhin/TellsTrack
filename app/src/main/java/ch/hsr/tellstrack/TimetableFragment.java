@@ -74,8 +74,8 @@ public class TimetableFragment extends Fragment {
         }
         
         TimetableView =  inflater.inflate(R.layout.content_timetable, container, false);
-        tvDateTop = (TextView) TimetableView.findViewById(R.id.tvDateTop);
-        rlDateTop = (RelativeLayout) TimetableView.findViewById(R.id.rlDateTop);
+        tvDateTop = TimetableView.findViewById(R.id.tvDateTop);
+        rlDateTop = TimetableView.findViewById(R.id.rlDateTop);
         rlDateTop.setVisibility(View.GONE);
         SetupListener();
         SetupWhenButton();
@@ -84,7 +84,7 @@ public class TimetableFragment extends Fragment {
 
     private void SetupWhenButton() {
         departureArrivalTime = new DepartureArrivalTime(getActivity());
-        Button btn = (Button) TimetableView.findViewById(R.id.btnSetWhen);
+        Button btn = TimetableView.findViewById(R.id.btnSetWhen);
         UpdateWhenButton(btn);
 
     }
@@ -96,7 +96,7 @@ public class TimetableFragment extends Fragment {
         btn.setText(departureArrivalTime.toString());
     }
     private void SetupListener() {
-        Button btn = (Button) TimetableView.findViewById(R.id.btnSearchConnection);
+        Button btn = TimetableView.findViewById(R.id.btnSearchConnection);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +105,7 @@ public class TimetableFragment extends Fragment {
             }
         });
         AddWhenButtonListener();
-        ImageButton btnReverse= (ImageButton) TimetableView.findViewById(R.id.btnReverseConnection);
+        ImageButton btnReverse= TimetableView.findViewById(R.id.btnReverseConnection);
         btnReverse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {ReverseConnection(); }
@@ -114,7 +114,7 @@ public class TimetableFragment extends Fragment {
         SetListenerForStationAutocomplete(R.id.txtFrom, R.id.pb_loading_indicatorFrom);
         SetListenerForStationAutocomplete(R.id.txtTo, R.id.pb_loading_indicatorTo);
 
-        final ListView listConnection= (ListView) TimetableView.findViewById(R.id.listConnections);
+        final ListView listConnection= TimetableView.findViewById(R.id.listConnections);
         listConnection.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -173,7 +173,7 @@ public class TimetableFragment extends Fragment {
     }
 
     private void AddWhenButtonListener() {
-        Button btn = (Button) TimetableView.findViewById(R.id.btnSetWhen);
+        Button btn = TimetableView.findViewById(R.id.btnSetWhen);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,7 +185,7 @@ public class TimetableFragment extends Fragment {
     public void updateDepartureArrivalTime(DepartureArrivalTime departureArrivalTime)
     {
         this.departureArrivalTime = departureArrivalTime;
-        Button btn = (Button) TimetableView.findViewById(R.id.btnSetWhen);
+        Button btn = TimetableView.findViewById(R.id.btnSetWhen);
         UpdateWhenButton(btn);
 
     }
@@ -200,8 +200,8 @@ public class TimetableFragment extends Fragment {
 
     private void ReverseConnection() {
         TimetableView.clearFocus();
-        final DelayAutoCompleteTextView txtFrom = (DelayAutoCompleteTextView) TimetableView.findViewById(R.id.txtFrom);
-        final DelayAutoCompleteTextView txtTo = (DelayAutoCompleteTextView) TimetableView.findViewById(R.id.txtTo);
+        final DelayAutoCompleteTextView txtFrom = TimetableView.findViewById(R.id.txtFrom);
+        final DelayAutoCompleteTextView txtTo = TimetableView.findViewById(R.id.txtTo);
         txtFrom.SetIndicatorActive(false);
         txtTo.SetIndicatorActive(false);
         Editable from = txtFrom.getText();
@@ -212,7 +212,7 @@ public class TimetableFragment extends Fragment {
     }
 
     private void SetListenerForStationAutocomplete(int autoCompleteTextView, int indicator) {
-        final DelayAutoCompleteTextView stationName = (DelayAutoCompleteTextView) TimetableView.findViewById(autoCompleteTextView);
+        final DelayAutoCompleteTextView stationName = TimetableView.findViewById(autoCompleteTextView);
         stationName.setThreshold(THRESHOLD);
         stationName.setAdapter(new StationAutoCompleteAdapter(TimetableView.getContext()));
         stationName.setLoadingIndicator(
@@ -230,9 +230,9 @@ public class TimetableFragment extends Fragment {
 
     private void LoadConnections() {
         listOfConnections = null;
-        EditText txtFrom = (EditText) TimetableView.findViewById(R.id.txtFrom);
-        EditText txtTo = (EditText) TimetableView.findViewById(R.id.txtTo);
-        ProgressBar pb = (android.widget.ProgressBar) TimetableView.findViewById(R.id.pb_loading_indicatorListConnections);
+        EditText txtFrom = TimetableView.findViewById(R.id.txtFrom);
+        EditText txtTo = TimetableView.findViewById(R.id.txtTo);
+        ProgressBar pb = TimetableView.findViewById(R.id.pb_loading_indicatorListConnections);
         pb.setVisibility(View.VISIBLE);
         CS = new ConnectionSearch(txtFrom.getText().toString(),txtTo.getText().toString(), simpleDateFormat.format(departureArrivalTime.calendar.getTime()), simpleDateFormatTime.format(departureArrivalTime.calendar.getTime()), departureArrivalTime.isArrival);
         new LoaderTask().execute(CS);
@@ -240,7 +240,7 @@ public class TimetableFragment extends Fragment {
 
     private void LoadLaterConnections() {
         if (CS != null && listOfConnections != null && listOfConnections.size() >= 4) {
-            ProgressBar pb = (android.widget.ProgressBar) TimetableView.findViewById(R.id.pb_loading_indicatorListConnections);
+            ProgressBar pb = TimetableView.findViewById(R.id.pb_loading_indicatorListConnections);
             pb.setVisibility(View.VISIBLE);
             try {
                 Calendar calendar  =  Calendar.getInstance();
@@ -270,7 +270,7 @@ public class TimetableFragment extends Fragment {
     private class LoaderTask extends AsyncTask<ConnectionSearch, Void, ConnectionList> {
         @Override
         protected ConnectionList doInBackground(ConnectionSearch... params) {
-            // Get Repository
+
             OpenDataTransportRepository repo = new OpenDataTransportRepository();
 
             ConnectionList connectionList = null;
@@ -290,12 +290,12 @@ public class TimetableFragment extends Fragment {
         }
         @Override
         protected void onPostExecute(ConnectionList connectionList) {
-            // Construct the data source
+
             if(connectionList != null ) {
                 List<Connection> lconnections = SortConnectionList(connectionList);
                 if(lconnections != null) {
                     if (listOfConnections == null) {
-                        listView = (ListView) TimetableView.findViewById(R.id.listConnections);
+                        listView = TimetableView.findViewById(R.id.listConnections);
                         listOfConnections = lconnections;
                         ConnectionAdapter adapter = new ConnectionAdapter(getContext(), listOfConnections);
                         listView.setAdapter(adapter);
@@ -310,11 +310,9 @@ public class TimetableFragment extends Fragment {
                 }
             }
 
-            ProgressBar pb = (android.widget.ProgressBar) TimetableView.findViewById(R.id.pb_loading_indicatorListConnections);
+            ProgressBar pb =  TimetableView.findViewById(R.id.pb_loading_indicatorListConnections);
             pb.setVisibility(View.GONE);
 
-
-            // Hide the Keyboard
             Context mContext = getContext();
             InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(TimetableView.getWindowToken(), 0);

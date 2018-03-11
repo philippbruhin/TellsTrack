@@ -47,12 +47,12 @@ public class DepartureArrivalTimePickerDialog
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            ToggleButton tglArrival= (ToggleButton) view.findViewById(R.id.toggleButtonAnkunft);
+                            ToggleButton tglArrival = view.findViewById(R.id.toggleButtonAnkunft);
                             _departureArrivalTime.isArrival = tglArrival.isChecked();
 
 
-                            DatePicker datepicker= (DatePicker) view.findViewById(R.id.date_picker);
-                            TimePicker timepicker= (TimePicker) view.findViewById(R.id.time_picker);
+                            DatePicker datepicker= view.findViewById(R.id.date_picker);
+                            TimePicker timepicker= view.findViewById(R.id.time_picker);
 
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                 _departureArrivalTime.calendar.set(datepicker.getYear(), datepicker.getMonth(), datepicker.getDayOfMonth(), timepicker.getHour(), timepicker.getMinute(), 0);

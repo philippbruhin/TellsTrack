@@ -37,28 +37,28 @@ public class ConnectionAdapter extends ArrayAdapter<Connection> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
+
 
         Connection connection = getItem(position);
-        // Check if an existing view is being reused, otherwise inflate the view
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_connection, parent, false);
         }
 
-        // Lookup view for data population
-        TextView tvFrom = (TextView) convertView.findViewById(R.id.tvFrom);
-        TextView tvTo = (TextView) convertView.findViewById(R.id.tvTo);
-        TextView tvDepartureDate = (TextView) convertView.findViewById(R.id.tvDepartureDate);
-        TextView tvDepartureTime = (TextView) convertView.findViewById(R.id.tvDepartureTime);
-        TextView tvArrivalDate = (TextView) convertView.findViewById(R.id.tvArrivalDate);
-        TextView tvArrivalTime = (TextView) convertView.findViewById(R.id.tvArrivalTime);
-        TextView tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
-        TextView tvdetPlatfArr = (TextView) convertView.findViewById(R.id.tvdetPlatfArr);
-        TextView tvdetPatfDep = (TextView) convertView.findViewById(R.id.tvdetPatfDep);
-        // Populate the data into the template view using the data object
+
+        TextView tvFrom =  convertView.findViewById(R.id.tvFrom);
+        TextView tvTo = convertView.findViewById(R.id.tvTo);
+        TextView tvDepartureDate =  convertView.findViewById(R.id.tvDepartureDate);
+        TextView tvDepartureTime =  convertView.findViewById(R.id.tvDepartureTime);
+        TextView tvArrivalDate =  convertView.findViewById(R.id.tvArrivalDate);
+        TextView tvArrivalTime = convertView.findViewById(R.id.tvArrivalTime);
+        TextView tvDuration = convertView.findViewById(R.id.tvDuration);
+        TextView tvdetPlatfArr = convertView.findViewById(R.id.tvdetPlatfArr);
+        TextView tvdetPatfDep = convertView.findViewById(R.id.tvdetPatfDep);
+
         assert connection != null;
         tvFrom.setText(connection.getFrom().getStation().getName());
-        RelativeLayout rlDate = (RelativeLayout) convertView.findViewById(R.id.rlDate);
+        RelativeLayout rlDate = convertView.findViewById(R.id.rlDate);
         tvdetPatfDep.setText(connection.getFrom().getPlatform());
         tvdetPlatfArr.setText(connection.getTo().getPlatform());
 
@@ -70,10 +70,10 @@ public class ConnectionAdapter extends ArrayAdapter<Connection> {
             departure.setTime(inputFormat.parse(connection.getFrom().getDeparture()));
             arrival.setTime(inputFormat.parse(connection.getTo().getArrival()));
             if(position > 0) {
-                Connection previouConnection = getItem(position - 1);
+                Connection previousConnection = getItem(position - 1);
                 Calendar previousD = Calendar.getInstance();
-                assert previouConnection != null;
-                previousD.setTime(inputFormat.parse(previouConnection.getFrom().getDeparture()));
+                assert previousConnection != null;
+                previousD.setTime(inputFormat.parse(previousConnection.getFrom().getDeparture()));
                 if(previousD.get(Calendar.DATE) != departure.get(Calendar.DATE))
                 {
                     rlDate.setVisibility(View.VISIBLE);
@@ -98,7 +98,6 @@ public class ConnectionAdapter extends ArrayAdapter<Connection> {
             e.printStackTrace();
         }
 
-        // Check if Duration ist longer than a day
         String temp =  connection.getDuration();
         temp = temp.substring(0, temp.indexOf('d'));
         int iDay = Integer.valueOf(temp);
@@ -110,7 +109,6 @@ public class ConnectionAdapter extends ArrayAdapter<Connection> {
         tvArrivalDate.setText(sdfDate.format(arrival.getTime()));
         tvArrivalTime.setText(sdfTime.format(arrival.getTime()));
 
-        // Return the completed view to render on screen
         return convertView;
     }
 

@@ -19,10 +19,6 @@ import ch.hsr.tellstrack.model.ConnectionSection;
 
 public class DetailsActivityFragment extends Fragment {
 
-    public DetailsActivityFragment() {
-    }
-
-
     private SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
     private SimpleDateFormat sdfDuration = new SimpleDateFormat("HH'h':mm'm'");
     private SimpleDateFormat sdfDate = new SimpleDateFormat("dd.MM.yyyy");
@@ -54,7 +50,6 @@ public class DetailsActivityFragment extends Fragment {
         ((TextView) view.findViewById(R.id.tvdFrom)).setText(ConnectionSections.get(0).From);
         ((TextView) view.findViewById(R.id.tvdTo)).setText(ConnectionSections.get(0).ToEnd);
 
-        // Check if Duration ist longer than a day
         String temp =  ConnectionSections.get(0).Duration;
         temp = temp.substring(0, temp.indexOf('d'));
         int iDay = Integer.valueOf(temp);

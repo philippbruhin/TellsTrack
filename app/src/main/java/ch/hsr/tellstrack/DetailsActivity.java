@@ -22,18 +22,13 @@ public class DetailsActivity extends AppCompatActivity {
 
         setContentView(R.layout.content_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setTitle(R.string.ConnectionDetails);
         setSupportActionBar(toolbar);
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            // This ID represents the Up button
             navigateUpTo(new Intent(this, TimetableFragment.class));
             return true;
         }
