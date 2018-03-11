@@ -39,20 +39,11 @@ public class ConnectionSectionAdapter extends ArrayAdapter<ConnectionSection> {
 
         Calendar departure = Calendar.getInstance();
         Calendar arrival = Calendar.getInstance();
-        Calendar prognosisDep = Calendar.getInstance();
-        Calendar prognosisArr = Calendar.getInstance();
 
         try {
             assert connectionSection != null;
             departure.setTime(inputFormat.parse(connectionSection.DepartureTime));
             arrival.setTime(inputFormat.parse(connectionSection.ArrivalTime));
-
-            if (connectionSection.DeparturePrognosis != null) {
-                prognosisDep.setTime(inputFormat.parse(connectionSection.DeparturePrognosis));
-            }
-            if (connectionSection.ArrivalPrognosis != null) {
-                prognosisArr.setTime(inputFormat.parse(connectionSection.ArrivalPrognosis));
-            }
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -62,21 +53,10 @@ public class ConnectionSectionAdapter extends ArrayAdapter<ConnectionSection> {
         ((TextView) convertView.findViewById(R.id.tvdetDeparture)).setText(connectionSection.Departure);
         ((TextView) convertView.findViewById(R.id.tvdetPatfDep)).setText(connectionSection.DeparturePlatform);
 
-        if (connectionSection.DeparturePrognosis != null) {
-            ((TextView) convertView.findViewById(R.id.tvdetProgDep)).setText(sdfTime.format(prognosisDep.getTime()));
-        } else {
-            ((TextView) convertView.findViewById(R.id.tvdetProgDep)).setText("");
-        }
 
         ((TextView) convertView.findViewById(R.id.tvdetArrTime)).setText(sdfTime.format(arrival.getTime()));
         ((TextView) convertView.findViewById(R.id.tvdetArrival)).setText(connectionSection.Arrival);
         ((TextView) convertView.findViewById(R.id.tvdetPlatfArr)).setText(connectionSection.ArrivalPlatform);
-
-        if (connectionSection.ArrivalPrognosis != null) {
-            ((TextView) convertView.findViewById(R.id.tvdetProgArr)).setText(sdfTime.format(prognosisArr.getTime()));
-        } else {
-            ((TextView) convertView.findViewById(R.id.tvdetProgArr)).setText("");
-        }
 
         ((TextView) convertView.findViewById(R.id.tvdetName)).setText(connectionSection.Name);
         ((TextView) convertView.findViewById(R.id.tvdetEndTo)).setText(connectionSection.To);
