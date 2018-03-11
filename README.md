@@ -32,7 +32,7 @@ Home | Drawer | Autocomplete
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Home](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/Screenshots/01_home.png "Home")  |  ![Drawer](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/Screenshots/02_drawer.png "Drawer") | ![Autocomplete](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/Screenshots/03_autocomplete.png "Autocomplete")
 
-Date & Time Picker | Connection | Connection details
+Date & Time Picker | Connections | Connection details
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Date & Time Picker](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/Screenshots/04_datetimepicker.png "Date & Time Picker")  |  ![Connection](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/Screenshots/05_connection.png "Connection")  |  ![Connection details](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/Screenshots/06_connection_details.png "Connection details")
 
