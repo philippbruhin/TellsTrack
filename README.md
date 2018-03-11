@@ -10,14 +10,15 @@ Due to the fact that this is a school assignment the **project will not be devel
 
 ## Implementation and facts
 * Based on Android mobile operating system, developed by Google.
-* Consumes the api of [http://transport.opendata.ch/](http://transport.opendata.ch/)
+* Consumes the api of [transport.opendata.ch](http://transport.opendata.ch/), which is powered by [Opendata.ch](https://opendata.ch/).
 * Minimum SDK Version: 24 (Android Nougat 7.0 and up)
+* App layout with drawer, autocomplete, date & timepicker, connection overview and connection details fragments as well as an about page.
 
 ## Installation
 Since this app is not listed in the Google Play Store, it has to be installed manually.
 
 ### Step 1
-Before you can install it on your phone you will need to make sure that third-party apps are allowed on your device. Go to Menu > Settings > Security > and check Unknown Sources to allow your phone to install apps from sources other than the Google Play Store. Android 8.0 Oreo does things a little differently. Rather than check a global setting to allow installation from unknown sources, you'll be you'll be prompted to allow your browser or file manager to install APKs the first time you attempt to do so.
+Before you can install it on your phone you will need to make sure that third-party apps are allowed on your device. Go to **Menu > Settings > Security >** and check **Unknown Sources** to allow your phone to install apps from sources other than the Google Play Store. Android 8.0 Oreo does things a little differently. Rather than check a global setting to allow installation from unknown sources, you'll be you'll be prompted to allow your browser or file manager to install APKs the first time you attempt to do so.
 
 ### Step 2
 Download the [APK (Android Package Kit)](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/APK/app-debug.apk) file to your computer. Then copy the APK file into a folder of your choice in your Androud Smartphone.
@@ -37,4 +38,5 @@ Date & Time Picker | Connection | Connection details
 
 ## Credits
 * [Android Studio](https://developer.android.com/studio/) - The Official IDE for Android
+* Thanks to [Opendata.ch](https://opendata.ch/) for providing the API for free.
 * Thanks to Mischa Demarmels ([Zühlke](https://www.zuehlke.com/)) and Stefan Schoeb ([Paixon](https://paixon.ch/)) for lead through the course.
