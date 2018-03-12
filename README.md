@@ -39,4 +39,4 @@ Date & Time Picker | Connections | Connection details
 ## Credits
 * [Android Studio](https://developer.android.com/studio/) - The Official IDE for Android
 * Thanks to [Opendata.ch](https://opendata.ch/) for providing the API for free.
-* Thanks to Mischa Demarmels ([Zühlke](https://www.zuehlke.com/)) and Stefan Schoeb ([Paixon](https://paixon.ch/)) for lead through the course.
+* Thanks to Mischa Demarmels ([Zühlke](https://www.zuehlke.com/)) and Stefan Schoeb ([Paixon](https://paixon.ch/)) for leading through the course.
