@@ -21,7 +21,7 @@ Since this app is not listed in the Google Play Store, it has to be installed ma
 Before you can install it on your phone you will need to make sure that third-party apps are allowed on your device. Go to **Menu > Settings > Security >** and check **Unknown Sources** to allow your phone to install apps from sources other than the Google Play Store. Android 8.0 Oreo does things a little differently. Rather than check a global setting to allow installation from unknown sources, you'll be you'll be prompted to allow your browser or file manager to install APKs the first time you attempt to do so.
 
 ### Step 2
-Download the [APK (Android Package Kit)](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/APK/app-debug.apk) file to your computer. Then copy the APK file into a folder of your choice in your Androud Smartphone.
+Download the [APK (Android Package Kit)](https://github.com/philippbruhin/TellsTrack/blob/master/documentation/APK/app-debug.apk) file to your computer. Then copy the APK file into a folder of your choice in your Android Smartphone.
 
 You will now be able to search for the file location in the My files folder of your device. Find the APK file, tap it, then hit Install. And now you're done, congratulations, you have your TellsTrack 2.0. 
 
